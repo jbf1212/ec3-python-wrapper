@@ -16,6 +16,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon'
 ]
 
 intersphinx_mapping = {
@@ -39,5 +40,9 @@ epub_show_urls = 'footnote'
 ################################
 # CUSTOM
 ################################
+napoleon_google_docstring = True
+napoleon_include_init_with_doc = True
+napoleon_attr_annotations = True
+
 __version__ = version.split("-", 0)
 __release__ = version
