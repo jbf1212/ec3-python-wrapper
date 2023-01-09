@@ -13,7 +13,7 @@ pip install ec3-python-wrapper
 
 ## Documentation
 
-Checkout the docs on...
+Documentation in Progress at [https://ec3-python-wrapper.readthedocs.io/](https://ec3-python-wrapper.readthedocs.io/)
 
 ### Usage Example
 
