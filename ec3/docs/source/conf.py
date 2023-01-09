@@ -1,5 +1,3 @@
-from ec3 import __version__ as version
-
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -44,5 +42,5 @@ napoleon_google_docstring = True
 napoleon_include_init_with_doc = True
 napoleon_attr_annotations = True
 
-__version__ = version.split("-", 0)
-__release__ = version
+release = '0.0'
+version = '0.0.1'
