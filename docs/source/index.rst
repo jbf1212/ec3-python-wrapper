@@ -16,8 +16,7 @@ Check out the :doc:`getting-started` section for further information on getting 
    :maxdepth: 2
    :caption: Contents:
 
-   getting-started
-   materials
+   modules
 
 
 Indices and tables
