@@ -1,3 +1,7 @@
+import sys
+import os
+from ec3 import __version__ as version
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -25,6 +29,18 @@ intersphinx_disabled_domains = ["std"]
 
 templates_path = ["_templates"]
 
+# Auto Create Api Reference
+autoapi_dirs = ["../ec3"]
+autoapi_add_toctree_entry = True
+autoapi_options = [
+    "members",
+    "undoc-members",
+    "private-members",
+    "show-inheritance",
+    "show-module-summary",
+    "special-members",
+    "imported-members",
+]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -42,5 +58,6 @@ napoleon_google_docstring = True
 napoleon_include_init_with_doc = True
 napoleon_attr_annotations = True
 
-release = "0.0"
-version = "0.0.1"
+
+__version__ = version.split("-", 0)
+__release__ = version
