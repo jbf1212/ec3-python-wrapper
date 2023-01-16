@@ -70,9 +70,7 @@ class EC3Materials(EC3Abstract):
         processed_params = self._process_params(params)
 
         if return_all:
-            return super()._get_all(
-                self.url.materials_url(), **processed_params
-            )
+            return super()._get_all(self.url.materials_url(), **processed_params)
         else:
             return super()._get_records(self.url.materials_url(), **processed_params)
 
