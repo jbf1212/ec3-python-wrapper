@@ -3,6 +3,7 @@
 .vscode
 .venv
 
+build/
 dist/
 docs/build
 ec3_tests.ipynb
