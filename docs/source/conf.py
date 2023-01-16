@@ -1,7 +1,5 @@
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join('..', '..', 'ec3')))
-from ec3 import __version__ as version
 
 
 # #change directories
@@ -67,5 +65,5 @@ napoleon_include_init_with_doc = True
 napoleon_attr_annotations = True
 
 
-__version__ = version.split("-", 0)
-__release__ = version
+__version__ = "0.0"
+__release__ = "0.0.1"
