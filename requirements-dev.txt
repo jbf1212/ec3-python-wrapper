@@ -1,0 +1,10 @@
+# Docs
+Sphinx==5.3.0
+
+# Packaging
+wheel==0.38.4
+twine==4.0.2
+build==0.10.0
+
+# Formatting
+black  ; python_version >="3.6"
