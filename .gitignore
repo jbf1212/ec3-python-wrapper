@@ -10,3 +10,4 @@ ec3_tests.ipynb
 .python-version
 *__pycache__
 *.egg
+*egg-info
