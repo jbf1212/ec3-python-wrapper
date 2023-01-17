@@ -54,7 +54,8 @@ autoapi_options = [
 
 html_theme = "sphinx_rtd_theme"
 
-html_static_path = []
+exclude_patterns = []
+html_static_path = ["_static"]
 
 # -- Options for EPUB output
 epub_show_urls = "footnote"
