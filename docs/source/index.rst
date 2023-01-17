@@ -16,7 +16,8 @@ Check out the :doc:`getting-started` section for further information on getting 
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   getting-started
+   ec3
 
 
 Indices and tables
