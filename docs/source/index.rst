@@ -17,7 +17,8 @@ Check out the :doc:`getting-started` section for further information on getting 
    :caption: Contents:
 
    getting-started
-   ec3-api
+   materials
+   epds
 
 _______________________________________________
 
