@@ -42,3 +42,10 @@ Refer to the `Building Transparency API documentation <https://buildingtranspare
     >>> mat_param_dict = {"lightweight":True, "concrete_compressive_strength_at_28d__target":"5000 psi", "jurisdiction":"US"}
     >>> ec3_materials.return_fields = ["id", "concrete_compressive_strength_28d", "gwp"]
     >>> mat_records = ec3_materials.get_materials(return_all=True, params=mat_param_dict)
+
+
+Examples
+**********
+
+The following Jupyter Notebook in the repository will run through some further examples:
+`Jupyter Notebook Example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_jupyter.ipynb>`_
