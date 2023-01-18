@@ -13,16 +13,17 @@ pip install ec3-python-wrapper
 
 ## Documentation
 
-Documentation in Progress at [https://ec3-python-wrapper.readthedocs.io/](https://ec3-python-wrapper.readthedocs.io/)
+For documentation on how to use the EC3 Python Wrapper visit:
+[https://ec3-python-wrapper.readthedocs.io/](https://ec3-python-wrapper.readthedocs.io/)
 
 ### Usage Example
 
-A Jupyter Notebook with some examples onf how to use the EC3 Python Wrapper can be found here...
+A Jupyter Notebook with some examples onf how to use the EC3 Python Wrapper can be found [here](ec3_jupyter.ipynb)
 
-Below are some examples on using the wrapper...
+## Credits
 
-### Inspiration
+* Obviously none of this would exist without the great efforts of the [Building Transparency](https://buildingtransparency.org/ec3) team and the EC3 database.
+* Much of how this library has been structured was modeled off of the amazing work done on the [pyAirtable module](https://github.com/gtalarico/pyairtable).
 
-Obviously none of this would exist without the amazing efforts of the [Building Transparency](https://buildingtransparency.org/ec3) team and the database they've been gathering.
-
-Much of how this library has been structured was modeled off of the great work done on the [pyAirtable module](https://github.com/gtalarico/pyairtable).
+## License
+`MIT License <https://opensource.org/licenses/MIT>`_
