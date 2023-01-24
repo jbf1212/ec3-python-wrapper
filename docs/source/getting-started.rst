@@ -47,5 +47,6 @@ Refer to the `Building Transparency API documentation <https://buildingtranspare
 Examples
 **********
 
-The following Jupyter Notebook in the repository will run through some further examples:
-`Jupyter Notebook Example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_jupyter.ipynb>`_
+Some Jupyter Notebook examples can be found over in the github repository:
+`Overview example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_overview.ipynb>`_
+`Material plotting example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_materials_plot.ipynb>`_

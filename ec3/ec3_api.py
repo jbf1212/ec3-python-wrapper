@@ -1,8 +1,8 @@
-"""@package EC3API
-The following Python 3 class is intended to wrap some common use cases for working with the EC3 API
-This is not intended to be a fully comprehensive wrapper of the entire API.
+"""
+The EC3Abstract class is an abstract class that contains some of the functionality
+used across some of the other classes that inherit from it.
 
-This wrapper is currently built primary for retrieving data from EC3.
+This is currently built primarily for retrieving data from EC3.
 Future development may focus on other capabilities to manage and upload data.
 
 Full api documentation can be found at:
@@ -10,9 +10,6 @@ https://buildingtransparency.org/ec3/manage-apps/api-doc/api#/
 """
 import abc
 import requests
-import posixpath
-from urllib.parse import quote
-from datetime import datetime
 
 
 class EC3Abstract(metaclass=abc.ABCMeta):
@@ -30,7 +27,6 @@ class EC3Abstract(metaclass=abc.ABCMeta):
             # ignore any unresolved references
             requests.packages.urllib3.disable_warnings()
 
-        # self.url = EC3URLs(response_format=response_format)
         self.remove_nulls = True  # Determines if responses should return items with null values since EC3 returns everything
 
     def _process_response(self, response):
