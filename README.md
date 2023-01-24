@@ -29,4 +29,4 @@ Some Jupyter Notebook examples are provided here:
 * Much of how this library has been structured was modeled off of the amazing work done on the [pyAirtable module](https://github.com/gtalarico/pyairtable).
 
 ## License
-`MIT License <https://opensource.org/licenses/MIT>`_
+[MIT](https://opensource.org/licenses/MIT)
