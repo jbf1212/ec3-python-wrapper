@@ -19,8 +19,9 @@ For documentation on how to use the EC3 Python Wrapper visit:
 ### Usage Example
 
 Some Jupyter Notebook examples are provided here:
-Overview of some available functions: [ec3_overview.ipynb](ec3_overview.ipynb)
-Querying and plotting materials: [ec3_materials_plot.ipynb](ec3_materials_plot.ipynb)
+
+* Overview of some available functions: [ec3_overview.ipynb](ec3_overview.ipynb)
+* Querying and plotting materials: [ec3_materials_plot.ipynb](ec3_materials_plot.ipynb)
 
 ## Credits
 
@@ -28,4 +29,4 @@ Querying and plotting materials: [ec3_materials_plot.ipynb](ec3_materials_plot.i
 * Much of how this library has been structured was modeled off of the amazing work done on the [pyAirtable module](https://github.com/gtalarico/pyairtable).
 
 ## License
-`MIT License <https://opensource.org/licenses/MIT>`_
+[MIT](https://opensource.org/licenses/MIT)
