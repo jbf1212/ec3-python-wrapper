@@ -58,8 +58,7 @@ html_static_path = ["_static"]
 html_logo = "ec3_wrapper_logo.svg"
 html_theme_options = {
     'logo_only': True,
-    'display_version': False,
-    "github_url": "https://github.com/jbf1212/ec3-python-wrapper"
+    'display_version': False
 }
 
 html_css_files = ["custom.css"]
