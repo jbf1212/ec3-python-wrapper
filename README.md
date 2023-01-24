@@ -19,6 +19,7 @@ For documentation on how to use the EC3 Python Wrapper visit:
 ### Usage Example
 
 Some Jupyter Notebook examples are provided here:
+
 Overview of some available functions: [ec3_overview.ipynb](ec3_overview.ipynb)
 Querying and plotting materials: [ec3_materials_plot.ipynb](ec3_materials_plot.ipynb)
 
