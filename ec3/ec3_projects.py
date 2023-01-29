@@ -38,7 +38,7 @@ class EC3Projects(EC3Abstract):
             return_all (bool, optional): Set to True to return all matches. Defaults to False, which will return the quantity specified in page_size.
 
         Returns:
-            list: List of dictionaries of matching Project records
+            project (list): List of dictionaries of matching Project records
         """
         processed_params = self._process_params(params)
 
@@ -53,6 +53,9 @@ class EC3Projects(EC3Abstract):
 
         Args:
             project_id (str): Entity ID
+
+        Returns:
+            project (list): List of dictionaries of matching Project records
         """
         return super()._request(
             "get", self.url.projects_id_url().format(project_id=project_id)
@@ -65,6 +68,9 @@ class EC3Projects(EC3Abstract):
 
         Args:
             project_name (str): Search term for your EC3 project name
+
+        Returns:
+            project (list): List of dictionaries of matching Project records
         """
         return super()._request(
             "get", self.url.projects_name_url().format(project_name=project_name)

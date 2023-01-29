@@ -51,7 +51,7 @@ class EC3epds(EC3Abstract):
             return_all (bool, optional): Set to True to return all matches. Defaults to False, which will return the quantity specified in page_size.
 
         Returns:
-            list: List of dictionaries of matching EPD records
+            epds (list): List of dictionaries of matching EPD records
         """
         processed_params = self._process_params(params)
 
@@ -66,6 +66,8 @@ class EC3epds(EC3Abstract):
 
         Args:
             epd_xpd_uuid (str): Open xPD UUID (Example: EC300001)
+        Returns:
+            epds (list): List of dictionaries of matching EPD records
         """
         return super()._request(
             "get", self.url.epds_xpd_uuid_url().format(epd_xpd_uuid=epd_xpd_uuid)
