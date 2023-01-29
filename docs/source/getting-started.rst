@@ -48,5 +48,6 @@ Examples
 **********
 
 Some Jupyter Notebook examples can be found over in the github repository:
-`Overview example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_overview.ipynb>`_
-`Material plotting example <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_materials_plot.ipynb>`_
+
+* Example 1: `Overview Notebook <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_overview.ipynb>`_
+* Example 2: `Material Plotting Notebook <https://github.com/jbf1212/ec3-python-wrapper/blob/master/ec3_materials_plot.ipynb>`_

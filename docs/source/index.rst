@@ -13,12 +13,13 @@ Check out the :doc:`getting-started` section for further information on getting 
    This project is under active development.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    getting-started
    materials
    epds
+   projects
 
 _______________________________________________
 
