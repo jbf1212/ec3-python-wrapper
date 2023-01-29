@@ -28,6 +28,15 @@ class EC3URLs:
         )
         self.epds_id = "epds/{id}.{format}".format(format=self.format, id="{id}")
 
+        # projects
+        self.projects = "projects"
+        self.projects_id = "projects?id={project_id}".format(
+            format=self.format, project_id="{project_id}"
+        )
+        self.projects_name = "projects?name__like={project_name}".format(
+            format=self.format, project_name="{project_name}"
+        )
+
     def base_url(self):
         """
         Returns the base url
@@ -83,3 +92,22 @@ class EC3URLs:
         Combines the base URL and epds_id API URL
         """
         return self.base_url + self.product_classes
+
+    ### PROJECTS ###
+    def projects_url(self):
+        """
+        Combines the base URL and projects API URL
+        """
+        return self.base_url + self.projects
+
+    def projects_id_url(self):
+        """
+        Combines the base URL and projects ID API URL
+        """
+        return self.base_url + self.projects_id
+
+    def projects_name_url(self):
+        """
+        Combines the base URL and projects ID API URL
+        """
+        return self.base_url + self.projects_name
