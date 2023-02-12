@@ -1,4 +1,4 @@
-__version__ = "0.0.3.1"
+__version__ = "0.0.4"
 
 from .ec3_materials import EC3Materials
 from .ec3_epds import EC3epds
