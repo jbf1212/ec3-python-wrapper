@@ -19,7 +19,10 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         self.session = session
         self.session.headers.update({"Authorization": "Bearer {}".format(bearer_token)})
 
-        self.page_size = 100  # specifies the max number of objects to return if not retrieving all (max allowed by api is 250)
+        self.page_size = 100  # specifies the max page size to return if not retrieving all (max allowed by api is 250)
+        self.max_records = 100  # specifies the maximum number of records to return. If less than page size, then set page size equal to this
+
+        # self.session.headers.update({"X-Total-Count": str(self.max_records)}) #NOTE This does not currently work as expected
 
         self.format = response_format
         self._ssl_verify = ssl_verify
@@ -64,10 +67,38 @@ class EC3Abstract(metaclass=abc.ABCMeta):
             )
         else:
             response = self.session.request(method, url, verify=self._ssl_verify)
+
+        print(url)
         return self._process_response(response)
 
+    # Can revert to this once the 'X-Total-Count' working as expected
+    # def _get_records(self, url, **params):
+    #     return self._request("get", url, params=params)
+
     def _get_records(self, url, **params):
-        return self._request("get", url, params=params)
+        data = self._request("get", url, params=params)
+        all_records = data
+        page_number = 1
+
+        if self.page_size > self.max_records:
+            self.page_size == self.max_records
+
+        while len(data) == self.page_size and len(all_records) < self.max_records:
+            page_number += 1
+            params["params"]["page_number"] = page_number
+
+            try:
+                data = self._request("get", url, params=params)
+            except requests.exceptions.HTTPError:
+                break
+
+            if data:
+                all_records.extend(data)
+
+        if len(all_records) > self.max_records:
+            return all_records[0 : self.max_records]
+        else:
+            return all_records
 
     def _get_all(self, url, **params):
         data = self._get_records(url, **params)
