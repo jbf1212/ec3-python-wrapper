@@ -2,6 +2,7 @@ from datetime import datetime
 
 from .ec3_api import EC3Abstract
 from .ec3_urls import EC3URLs
+from .ec3_utils import postal_to_latlong
 
 
 class EC3Materials(EC3Abstract):
@@ -9,8 +10,8 @@ class EC3Materials(EC3Abstract):
     Wraps functionality of EC3 Materials
 
     Usage:
-        >>> ec3_mat_list = EC3Materials(bearer_token=token, ssl_verify=False)
-        >>> ec3_mat_list.get_materials(params=mat_param_dict)
+        >>> ec3_materials = EC3Materials(bearer_token=token, ssl_verify=False)
+        >>> ec3_mat_list = ec3_materials.get_materials(params=mat_param_dict)
     """
 
     def __init__(self, bearer_token, response_format="json", ssl_verify=True):
@@ -48,7 +49,7 @@ class EC3Materials(EC3Abstract):
         Returns matching materials
 
         Args:
-            return_all (bool, optional): Set to True to return all matches. Defaults to False, which will return the quantity specified in page_size.
+            return_all (bool, optional): Set to True to return all matches. Defaults to False, which will return the quantity specified in max_records.
 
         Returns:
             list: List of dictionaries of matching material records
@@ -59,6 +60,34 @@ class EC3Materials(EC3Abstract):
             return super()._get_all(self.url.materials_url(), **processed_params)
         else:
             return super()._get_records(self.url.materials_url(), **processed_params)
+
+    def get_materials_within_region(
+        self,
+        postal_code,
+        country_code="US",
+        plant_distance="100 mi",
+        return_all=False,
+        **params,
+    ):
+        """
+        Returns only materials from plants within provided distance of postal code.
+        This adds the "latitude", "longitude", and "plant_distance_lt" keys to your parameter dictionary.
+
+        Args:
+            postal_code (int): postal code
+            country_code (str, optional): Two letter country code.. Defaults to 'US'.
+            plant_distance (str, optional): Distance to plant with units in string ('mi' or 'km'). Defaults to "100 mi".
+            return_all (bool, optional): Set to True to return all matches. Defaults to False, which will return the quantity specified in max_records.
+
+        Returns:
+            list: List of dictionaries of matching material records within distance provided from postal code
+        """
+        lat, long = postal_to_latlong(postal_code, country_code)
+        params["params"]["latitude"] = lat
+        params["params"]["longitude"] = long
+        params["params"]["plant__distance__lt"] = plant_distance
+
+        return self.get_materials(return_all=return_all, **params)
 
     def get_material_by_xpduuid(self, epd_xpd_uuid):
         """
