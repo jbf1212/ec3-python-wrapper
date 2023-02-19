@@ -9,8 +9,8 @@ class EC3epds(EC3Abstract):
     Wraps functionality of EC3 EPDs
 
     Usage:
-        >>> ec3_epd_list = EC3epds(bearer_token=token, ssl_verify=False)
-        >>> ec3_epd_list.get_materials(params=epd_param_dict)
+        >>> ec3_epds = EC3epds(bearer_token=token, ssl_verify=False)
+        >>> ec3_epd_list = ec3_epds.get_epds(params=epd_param_dict)
     """
 
     def __init__(self, bearer_token, response_format="json", ssl_verify=True):
