@@ -21,10 +21,8 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         self.session = session
         self.session.headers.update({"Authorization": "Bearer {}".format(bearer_token)})
 
-        self.page_size = 100  # specifies the max page size to return if not retrieving all (max allowed by api is 250)
-        self.max_records = 100  # specifies the maximum number of records to return. If less than page size, then set page size equal to this
-
-        # self.session.headers.update({"X-Total-Count": str(self.max_records)}) #NOTE This does not currently work as expected
+        self.page_size = 100  # Specifies the page size to return. Default is 100. Max allowed by api is 250
+        self.max_records = 100  # Specifies the maximum number of records to return.
 
         self.format = response_format
         self._ssl_verify = ssl_verify
@@ -81,10 +79,6 @@ class EC3Abstract(metaclass=abc.ABCMeta):
 
         return self._process_response(response)
 
-    # Can revert to this once the 'X-Total-Count' working as expected
-    # def _get_records(self, url, **params):
-    #     return self._request("get", url, params=params)
-
     def _get_records(self, url, **params):
         """
         Returns the requested number of records.
@@ -94,9 +88,6 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         data = self._request("get", url, params=params)
         requested_records = data
         page_number = 1
-
-        if self.page_size > self.max_records:
-            self.page_size == self.max_records
 
         while len(data) == self.page_size and len(requested_records) < self.max_records:
             page_number += 1
@@ -119,6 +110,9 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         """
         Returns all the records as a single list
         """
+        hold_val1 = self.max_records
+        self.max_records = 10000000  # temp max value
+
         data = self._get_records(url, **params)
         all_records = data
         page_number = 1
@@ -134,6 +128,8 @@ class EC3Abstract(metaclass=abc.ABCMeta):
 
             if data:
                 all_records.extend(data)
+
+        self.max_records = hold_val1
 
         return all_records
 
