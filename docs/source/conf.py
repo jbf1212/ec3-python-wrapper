@@ -13,6 +13,7 @@ author = "Jared Friedman"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+autodoc_mock_imports = ["pgeocode"]
 
 extensions = [
     "sphinx.ext.duration",
