@@ -1,22 +1,26 @@
 Welcome to EC3 Python Wrapper's documentation!
 ==============================================
 
-Version: |version|
+.. container:: .large
 
-This is a Python wrapper for working with the *Building Transparency EC3 API*.
-Documentation for the EC3 API can be found `here <https://buildingtransparency.org/ec3/manage-apps/api-doc/api>`_
+   This is a Python wrapper for working with the `Building Transparency EC3 API <https://buildingtransparency.org/ec3/manage-apps/api-doc/api>`_
 
-Check out the :doc:`getting-started` section for further information on getting setup.
+   Latest Release: |version|
 
 .. note::
 
-   This project is under active development.
+   This project is still in the early stages.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
    getting-started
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents
+
    materials
    epds
    projects
