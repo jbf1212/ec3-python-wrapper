@@ -20,6 +20,7 @@ Check out the :doc:`getting-started` section for further information on getting 
    materials
    epds
    projects
+   utilities
 
 _______________________________________________
 
