@@ -23,8 +23,8 @@ class EC3URLs:
 
         # epds
         self.epds = "epds"
-        self.epds_xpd_uuid = "epds?open_xpd_uuid={epd_xpd_uuid}".format(
-            epd_xpd_uuid="{epd_xpd_uuid}"
+        self.epds_xpd_uuid = "epds/{epd_xpd_uuid}".format(
+            format=self.format, epd_xpd_uuid="{epd_xpd_uuid}"
         )
         self.epds_id = "epds/{id}.{format}".format(format=self.format, id="{id}")
 

@@ -89,16 +89,17 @@ class EC3Materials(EC3Abstract):
 
         return self.get_materials(return_all=return_all, **params)
 
-    def get_material_by_xpduuid(self, epd_xpd_uuid):
-        """
-        Returns the material from an Open xPD UUID of an EPD
+    # NOTE Querying materials by "open_xpd_uuid" does not appear to currently work with the api
+    # def get_material_by_xpduuid(self, epd_xpd_uuid):
+    #     """
+    #     Returns the material from an Open xPD UUID of an EPD
 
-        Args:
-            epd_xpd_uuid (str): Open xPD UUID (Example: EC300001)
+    #     Args:
+    #         epd_xpd_uuid (str): Open xPD UUID (Example: EC300001)
 
-        Returns:
-            list: List of dictionaries of matching material records
-        """
-        return super()._request(
-            "get", self.url.materials_xpd_uuid_url().format(epd_xpd_uuid=epd_xpd_uuid)
-        )
+    #     Returns:
+    #         list: List of dictionaries of matching material records
+    #     """
+    #     return super()._request(
+    #         "get", self.url.materials_xpd_uuid_url().format(epd_xpd_uuid=epd_xpd_uuid)
+    #     )

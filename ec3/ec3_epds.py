@@ -67,7 +67,7 @@ class EC3epds(EC3Abstract):
         Args:
             epd_xpd_uuid (str): Open xPD UUID (Example: EC300001)
         Returns:
-            list: List of dictionaries of matching EPD records
+            dict: Dictionary of the matching EPD record
         """
         return super()._request(
             "get", self.url.epds_xpd_uuid_url().format(epd_xpd_uuid=epd_xpd_uuid)

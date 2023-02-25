@@ -64,7 +64,10 @@ class EC3Abstract(metaclass=abc.ABCMeta):
 
             if self.remove_nulls is True:
                 ec3_response = response.json()
-                cleaned_response = [self._remove_nulls(d) for d in ec3_response]
+                if isinstance(ec3_response, dict):
+                    cleaned_response = self._remove_nulls(ec3_response)
+                else:
+                    cleaned_response = [self._remove_nulls(d) for d in ec3_response]
                 return cleaned_response
             else:
                 return response.json()
