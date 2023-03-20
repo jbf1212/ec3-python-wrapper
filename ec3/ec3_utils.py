@@ -22,3 +22,52 @@ def postal_to_latlong(postal_code, country_code="US"):
         lat = df["latitude"].item()
         long = df["longitude"].item()
     return (lat, long)
+
+
+def recursive_dict_list_return(dict_item, key_name, out_keys, outlist=[]):
+    """
+    Recursively loops through a nested json/dictionary based on the key name
+
+    This is intended for where the key_name may occur at multiple levels of nesting.
+    For example, the "subcategories" key occurs at multiple levels of the EC3 categories tree.
+    Using this function allows you to return a flattened list of dictionaries with the
+    desired keys defined in the "out_keys" argument.
+
+    Args:
+        dict_item (dict): Dictionary with nested data to crawl through
+        key_name (str): Name of key to crawl through nested dictionary
+        out_keys (list[str]): List of key names to return
+        outlist (list, optional): List to return (can be left empty if starting a new list)
+
+    Returns:
+        list: List of dictionaries with keys provided in out_keys
+    """
+    if (key_name in dict_item.keys()) and dict_item[key_name]:
+        new_dict = {k: dict_item[k] for k in out_keys}
+        outlist.append(new_dict)
+
+        for d in dict_item[key_name]:
+            recursive_dict_list_return(d, key_name, out_keys, outlist=outlist)
+
+    elif key_name in dict_item:
+        new_dict = {k: dict_item[k] for k in out_keys}
+        outlist.append(new_dict)
+
+    return outlist
+
+
+def get_masterformat_category_dict(category_tree):
+    """
+    Get a dictionary with masterformat codes as the keys and ids as the values
+
+    Args:
+        category_tree (dict): This should be a nested dictionary of all or part of the category tree
+
+    Returns:
+        dict: Dictionary with masterformat codes as keys (ex: {'03 00 00 Concrete': '484df282d43f4b0e855fad6b351ce006'})
+    """
+    category_dict_list = recursive_dict_list_return(
+        category_tree, "subcategories", ["masterformat", "id"]
+    )
+    masterformat_dict = {i["masterformat"]: i["id"] for i in category_dict_list}
+    return masterformat_dict
