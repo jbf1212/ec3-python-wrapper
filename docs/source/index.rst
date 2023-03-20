@@ -24,6 +24,7 @@ Welcome to EC3 Python Wrapper's documentation!
    materials
    epds
    projects
+   categories
    utilities
 
 _______________________________________________
