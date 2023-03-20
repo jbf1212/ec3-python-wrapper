@@ -37,6 +37,12 @@ class EC3URLs:
             format=self.format, project_name="{project_name}"
         )
 
+        # categories
+        self.categories_tree = "categories/root"
+        self.categories_id = "categories/{category_id}".format(
+            format=self.format, category_id="{category_id}"
+        )
+
     def base_url(self):
         """
         Returns the base url
@@ -111,3 +117,16 @@ class EC3URLs:
         Combines the base URL and projects ID API URL
         """
         return self.base_url + self.projects_name
+
+    ### CATEGORIES ###
+    def categories_tree_url(self):
+        """
+        Combines the base URL and categories url for the whole categories tree
+        """
+        return self.base_url + self.categories_tree
+
+    def categories_id_url(self):
+        """
+        Combines the base URL and projects ID API URL
+        """
+        return self.base_url + self.categories_id

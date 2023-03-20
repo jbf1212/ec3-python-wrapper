@@ -2,7 +2,8 @@ from datetime import datetime
 
 from .ec3_api import EC3Abstract
 from .ec3_urls import EC3URLs
-from .ec3_utils import postal_to_latlong
+from .ec3_categories import EC3Categories
+from .ec3_utils import postal_to_latlong, get_masterformat_category_dict
 
 
 class EC3Materials(EC3Abstract):
@@ -22,6 +23,9 @@ class EC3Materials(EC3Abstract):
         self.return_fields = []
         self.sort_by = ""
         self.only_valid = True
+        self.masterformat_filter = (
+            []
+        )  # Currently EC3 requires you to go through category class for this
 
         self.url = EC3URLs(response_format=response_format)
 
@@ -41,6 +45,16 @@ class EC3Materials(EC3Abstract):
             params["params"]["epd__date_validity_ends__gt"] = datetime.today().strftime(
                 "%Y-%m-%d"
             )
+
+        if self.masterformat_filter:
+            ec3_categories = EC3Categories(
+                bearer_token=self.bearer_token, ssl_verify=False
+            )
+            whole_tree = ec3_categories.get_all_categories()
+            masterformat_dict = get_masterformat_category_dict(whole_tree)
+
+            category_ids = [masterformat_dict[i] for i in self.masterformat_filter]
+            params["params"]["category"] = category_ids
 
         return params
 

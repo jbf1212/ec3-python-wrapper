@@ -18,6 +18,7 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         """
 
         session = requests.Session()
+        self.bearer_token = bearer_token
         self.session = session
         self.session.headers.update({"Authorization": "Bearer {}".format(bearer_token)})
 
