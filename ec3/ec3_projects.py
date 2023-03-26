@@ -6,6 +6,8 @@ class EC3Projects(EC3Abstract):
     """
     Wraps functionality of EC3 Projects
 
+    :ivar str sort_by: Optional name of return field to sort results by, defaults to ""
+
     Usage:
         >>> ec3_project_list = EC3Projects(bearer_token=token, ssl_verify=False)
         >>> ec3_project_list.get_projects(params=project_param_dict)

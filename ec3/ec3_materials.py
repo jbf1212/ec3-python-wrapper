@@ -10,6 +10,11 @@ class EC3Materials(EC3Abstract):
     """
     Wraps functionality of EC3 Materials
 
+    :ivar list return_fields: List of the fields you would like returned (EC3 returns everything by default), defaults to []
+    :ivar str sort_by: Optional name of return field to sort results by, defaults to ""
+    :ivar bool only_valid: If True will return only Materials with EPDs that are currently valid (set to False to also return materials with expired EPDs), defaults to True
+    :ivar list masterformat_filter: Optional list of Masterformat Category names to filter by (ex: ["03 21 00 Reinforcement Bars"]), defaults to []
+
     Usage:
         >>> ec3_materials = EC3Materials(bearer_token=token, ssl_verify=False)
         >>> ec3_mat_list = ec3_materials.get_materials(params=mat_param_dict)

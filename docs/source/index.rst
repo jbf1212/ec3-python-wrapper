@@ -21,6 +21,7 @@ Welcome to EC3 Python Wrapper's documentation!
    :maxdepth: 1
    :caption: Contents
 
+   abstract
    materials
    epds
    projects

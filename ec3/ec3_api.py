@@ -7,6 +7,11 @@ class EC3Abstract(metaclass=abc.ABCMeta):
     Represents the abstract class for the Building Transparency Api
 
     This class get inherited by other major classes.
+
+    :ivar int page_size: Specifies the page size to return. Max allowed by api is 250, defaults to 100
+    :ivar int max_records: Specifies the maximum number of records to return, defaults to 100
+    :ivar bool remove_nulls: Keep as True to remove fields with null values. Set to False to return all fields, defaults to True
+
     """
 
     def __init__(self, bearer_token, response_format="json", ssl_verify=True):
@@ -22,8 +27,8 @@ class EC3Abstract(metaclass=abc.ABCMeta):
         self.session = session
         self.session.headers.update({"Authorization": "Bearer {}".format(bearer_token)})
 
-        self.page_size = 100  # Specifies the page size to return. Default is 100. Max allowed by api is 250
-        self.max_records = 100  # Specifies the maximum number of records to return.
+        self.page_size = 100
+        self.max_records = 100
 
         self.format = response_format
         self._ssl_verify = ssl_verify
@@ -31,7 +36,7 @@ class EC3Abstract(metaclass=abc.ABCMeta):
             # ignore any unresolved references
             requests.packages.urllib3.disable_warnings()
 
-        self.remove_nulls = True  # Determines if responses should return items with null values since EC3 returns everything
+        self.remove_nulls = True
 
     def _process_response(self, response):
         """

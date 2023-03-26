@@ -10,6 +10,11 @@ class EC3epds(EC3Abstract):
     """
     Wraps functionality of EC3 EPDs
 
+    :ivar list return_fields: List of the fields you would like returned (EC3 returns everything by default), defaults to []
+    :ivar str sort_by: Optional name of return field to sort results by, defaults to ""
+    :ivar bool only_valid: If True will return only EPDs that are currently valid (set to False to also return expired EPDs), defaults to True
+    :ivar list masterformat_filter: Optional list of Masterformat Category names to filter by (ex: ["03 21 00 Reinforcement Bars"]), defaults to []
+
     Usage:
         >>> ec3_epds = EC3epds(bearer_token=token, ssl_verify=False)
         >>> ec3_epd_list = ec3_epds.get_epds(params=epd_param_dict)
