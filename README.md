@@ -1,4 +1,5 @@
 # EC3 Python Wrapper
+<p align="center"><img width="200" src="https://github.com/jbf1212/example-app-ec3-wrapper/blob/main/images/ec3_wrapper_logo.png"</p>
 
 This is a Python wrapper for working with the Building Transparency EC3 API.
 Documentation for the EC3 API can be found at [https://buildingtransparency.org/ec3/manage-apps/api-doc/api](https://buildingtransparency.org/ec3/manage-apps/api-doc/api)
