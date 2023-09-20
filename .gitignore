@@ -5,6 +5,7 @@
 
 build/
 dist/
+tests/
 docs/build
 ec3_tests.ipynb
 .python-version
