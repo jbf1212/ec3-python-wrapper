@@ -69,5 +69,23 @@ def get_masterformat_category_dict(category_tree):
     category_dict_list = recursive_dict_list_return(
         category_tree, "subcategories", ["masterformat", "id"]
     )
-    masterformat_dict = {i["masterformat"]: i["id"] for i in category_dict_list}
+
+    masterformat_dict = {i.get("masterformat"): i.get("id") for i in category_dict_list if i.get("masterformat") and i.get("id")}
     return masterformat_dict
+
+
+def get_displayname_category_dict(category_tree):
+    """
+    Get a dictionary with display names as the keys and ids as the values
+
+    Args:
+        category_tree (dict): This should be a nested dictionary of all or part of the category tree
+
+    Returns:
+        dict: Dictionary with display names as keys (ex: {'Ready Mix': '6991a61b52b24e59b1244fe9dee59e9b'})
+    """
+    category_dict_list = recursive_dict_list_return(
+        category_tree, "subcategories", ["display_name", "id"]
+    )
+    display_name_dict = {i.get("display_name"): i.get("id") for i in category_dict_list if i.get("display_name") and i.get("id")}
+    return display_name_dict

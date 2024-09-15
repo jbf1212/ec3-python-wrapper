@@ -3,7 +3,7 @@ from datetime import datetime
 from .ec3_api import EC3Abstract
 from .ec3_urls import EC3URLs
 from .ec3_categories import EC3Categories
-from .ec3_utils import get_masterformat_category_dict
+from .ec3_utils import get_masterformat_category_dict, get_displayname_category_dict
 
 
 class EC3epds(EC3Abstract):
@@ -14,6 +14,7 @@ class EC3epds(EC3Abstract):
     :ivar str sort_by: Optional name of return field to sort results by, defaults to ""
     :ivar bool only_valid: If True will return only EPDs that are currently valid (set to False to also return expired EPDs), defaults to True
     :ivar list masterformat_filter: Optional list of Masterformat Category names to filter by (ex: ["03 21 00 Reinforcement Bars"]), defaults to []
+    :ivar list display_name_filter: Optional list of Display Name Categories to filter by (ex: ["Ready Mix"]), defaults to []
 
     Usage:
         >>> ec3_epds = EC3epds(bearer_token=token, ssl_verify=False)
@@ -28,9 +29,13 @@ class EC3epds(EC3Abstract):
         self.return_fields = []
         self.sort_by = ""
         self.only_valid = True
+        self.category_tree = None
         self.masterformat_filter = (
             []
         )  # Currently EC3 requires you to go through category class for this
+        self.display_name_filter = (
+            []
+        )
 
         self.url = EC3URLs(response_format=response_format)
 
@@ -51,14 +56,24 @@ class EC3epds(EC3Abstract):
                 "%Y-%m-%d"
             )
 
-        if self.masterformat_filter:
+        if self.masterformat_filter or self.display_name_filter:
             ec3_categories = EC3Categories(
                 bearer_token=self.bearer_token, ssl_verify=False
             )
-            whole_tree = ec3_categories.get_all_categories()
-            masterformat_dict = get_masterformat_category_dict(whole_tree)
+            self.category_tree = ec3_categories.get_all_categories()
+
+        if self.masterformat_filter:
+
+            masterformat_dict = get_masterformat_category_dict(self.category_tree)
 
             category_ids = [masterformat_dict[i] for i in self.masterformat_filter]
+            params["params"]["category"] = category_ids
+
+        if self.display_name_filter:
+            display_name_dict = get_displayname_category_dict(self.category_tree)
+
+            category_ids = [display_name_dict[i] for i in self.display_name_filter]
+            category_ids = list(set(category_ids)) # Remove duplicates
             params["params"]["category"] = category_ids
 
         return params
