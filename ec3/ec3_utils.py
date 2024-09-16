@@ -70,7 +70,11 @@ def get_masterformat_category_dict(category_tree):
         category_tree, "subcategories", ["masterformat", "id"]
     )
 
-    masterformat_dict = {i.get("masterformat"): i.get("id") for i in category_dict_list if i.get("masterformat") and i.get("id")}
+    masterformat_dict = {
+        i.get("masterformat"): i.get("id")
+        for i in category_dict_list
+        if i.get("masterformat") and i.get("id")
+    }
     return masterformat_dict
 
 
@@ -87,5 +91,9 @@ def get_displayname_category_dict(category_tree):
     category_dict_list = recursive_dict_list_return(
         category_tree, "subcategories", ["display_name", "id"]
     )
-    display_name_dict = {i.get("display_name"): i.get("id") for i in category_dict_list if i.get("display_name") and i.get("id")}
+    display_name_dict = {
+        i.get("display_name"): i.get("id")
+        for i in category_dict_list
+        if i.get("display_name") and i.get("id")
+    }
     return display_name_dict
