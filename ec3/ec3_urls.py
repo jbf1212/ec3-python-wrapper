@@ -21,6 +21,10 @@ class EC3URLs:
             epd_xpd_uuid="{epd_xpd_uuid}"
         )
 
+        self.materials_convert_matfilter = "materials/convert-query".format(
+            format=self.format
+        )
+
         # epds
         self.epds = "epds"
         self.epds_xpd_uuid = "epds/{epd_xpd_uuid}".format(
@@ -73,6 +77,12 @@ class EC3URLs:
         Combines the base URL and epds_xpd_uuid API URL
         """
         return self.base_url + self.material_epds_xpd_uuid
+
+    def materials_convert_matfilter_url(self):
+        """
+        Combines the base URL and materials convert filter API URL
+        """
+        return self.base_url + self.materials_convert_matfilter
 
     ### EPDs ###
     def epds_url(self):
