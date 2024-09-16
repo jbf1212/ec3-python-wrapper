@@ -33,9 +33,7 @@ class EC3epds(EC3Abstract):
         self.masterformat_filter = (
             []
         )  # Currently EC3 requires you to go through category class for this
-        self.display_name_filter = (
-            []
-        )
+        self.display_name_filter = []
 
         self.url = EC3URLs(response_format=response_format)
 
@@ -63,7 +61,6 @@ class EC3epds(EC3Abstract):
             self.category_tree = ec3_categories.get_all_categories()
 
         if self.masterformat_filter:
-
             masterformat_dict = get_masterformat_category_dict(self.category_tree)
 
             category_ids = [masterformat_dict[i] for i in self.masterformat_filter]
@@ -73,7 +70,7 @@ class EC3epds(EC3Abstract):
             display_name_dict = get_displayname_category_dict(self.category_tree)
 
             category_ids = [display_name_dict[i] for i in self.display_name_filter]
-            category_ids = list(set(category_ids)) # Remove duplicates
+            category_ids = list(set(category_ids))  # Remove duplicates
             params["params"]["category"] = category_ids
 
         return params
