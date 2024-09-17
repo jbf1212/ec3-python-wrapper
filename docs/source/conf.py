@@ -8,7 +8,7 @@ from ec3 import __version__ as version
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "EC3 Python Wrapper"
-copyright = "2023, Jared Friedman"
+copyright = "2024, Jared Friedman"
 author = "Jared Friedman"
 
 # -- General configuration ---------------------------------------------------
