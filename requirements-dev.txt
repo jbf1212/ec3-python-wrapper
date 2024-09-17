@@ -12,3 +12,6 @@ build==0.10.0
 
 # Formatting
 black  ; python_version >="3.6"
+
+# Utilities
+pgeocode==0.3.0
